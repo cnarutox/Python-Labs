@@ -1,0 +1,155 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*teacherlist*/
+#teachers{
+	margin:15px 0px 0px 30px;
+	padding-left:40px;
+}
+.teacherbox{
+	float:left;
+	width:330px;
+	margin:0px 5px 15px 0px;
+	border:2px solid #ccc;
+}
+	.teacherimgbox{
+		margin:5px 5px 0px 8px;
+		float:left;
+		width:95px;
+		height:128px;
+	}
+	.teacherimgbox a.teacherlink{
+		position:relative;
+		left:0px;
+		top:-20px;
+		display:block;
+		width:90px;
+		text-align:center;
+		background-color:#DDD;
+		opacity:0.8
+	}
+	.teacherimgbox a.teacherlink:hover{
+		
+	}
+	.teacherbox .teacherbasic{
+		float:right;
+		margin:8px 15px 0px 0px;
+		width:200px;
+	}
+	.teacherbox .teacherbasic .teacherbasic_row{
+			border-bottom:1px dashed #ccc;
+			height:25px;
+			padding:2px 0px 0px 3px;
+		}
+	.teacherbox .teacherbasic .teacherbasic_row a{
+		color:#000;
+		font-weight:bold;
+	}
+/*teacherpage*/
+#teacher_top{
+	width:670px;
+	margin:20px 0px 0px 28px;
+}
+
+#teacher_img,#teacher_basic{
+	float:left;
+}
+
+#teacher_img{
+	width:210px;
+}
+.teacherimg{
+	border:1px solid #306fb7;
+	border-radius:3px;
+	padding:1px;
+}
+
+#teacher_basic{
+	width:460px;
+}
+#teacher_basic_items{
+	margin:12px 0px 0px ;
+	width:430px;
+}
+#teacher_basic_items div.item{
+	min-height:30px;
+	_height:30px;	
+}
+#teacher_basic_items div.item span.caption{
+	color:#306fb7;
+	font-weight:bold;
+	vertical-align:top;
+	display:inline-block;
+	width:80px;
+	height:100%;
+}
+#teacher_basic_items div.item span.info{
+	text-align:justify;
+	display:inline-block;
+	width:340px
+}
+
+#teacher_name{
+	font-size:28px;
+	font-family:"华文新魏";
+	margin:8px 0px 0px 80px;	
+}
+
+#teacher_main{
+	margin:10px 8px;
+}
+#parts_nav{
+	padding:0px;
+	border-bottom:2px solid #306fb7;
+	height:26px;
+}
+#parts_nav span.item{
+	display:inline-block;
+	padding:3px 10px;
+	background-color:#306fb7;/*#a26292*/
+	border:1px solid #306fb7;
+	border-bottom:none;
+	color:#fff;
+	cursor:pointer;
+	margin-bottom:-2px;
+}
+#parts_nav span.item:hover{
+	opacity:0.9;
+}
+#parts_nav span.item.selected{
+	background-color:#fff;
+	color:#306fb7;
+}
+
+.teacher_parts{
+	display:none;
+	margin:20px;
+}
+
+@media print{
+	.teacher_parts{
+		display: block;
+	}
+}
+
+.teacher_parts.selected{
+	display:block;
+}
+
+
+.teacher_parts .caption{
+	border-bottom:1px dotted #306fb7;
+	padding:0px 0px 0px 10px;
+	font-weight:bold;
+	color:#306fb7;
+	margin-bottom:5px;
+}
+
+.teacher_parts .parts_content{
+	margin:10px 0px 15px 30px;
+}
+
+.teacher_parts .parts_content a{
+	color:#306fb7 !important;
+	font-weight:bold
+}

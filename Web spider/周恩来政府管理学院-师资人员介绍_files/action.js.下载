@@ -1,0 +1,110 @@
+// JavaScript Document
+
+// 页面动态效果
+$(document).ready(function(e) {
+	//顶部导航栏调整
+	$('#bannerNavigation .navitem:first').addClass('first');
+	$('#bannerNavigation .navitem:last').addClass('last');
+	
+	//初始化左侧导航栏
+	if($.cookie('left_nav_1'))
+	{
+		//$('.left_nav_1 #'+$.cookie('left_nav_1')).addClass('expand').next('ul').toggleClass('collapsed');
+	}
+	if($.cookie('left_nav_2'))
+	{
+		//$('.left_nav_2 #'+$.cookie('left_nav_2')).addClass('selected');
+	}
+	
+	
+	//左侧导航栏动态展开效果
+	$('.left_nav_1>a').bind('click',function(){
+		$(this).next('.ul').toggleClass('collapsed');
+		if($(this).next('ul').text()!='')
+			$(this).toggleClass('expand');
+		
+		$(this).siblings('a').removeClass('expand');
+		$.cookie('left_nav_1',$(this).attr('id'));
+	});
+	$('.left_nav_2>a').bind('click',function(){
+		$.cookie('left_nav_2',$(this).attr('id'));
+	});
+	
+	//$('#left-nav-ul .left_nav_1:last').addClass('bottom_border');
+	
+	
+	//透明元素在各浏览器下兼容
+	$('.opacity').css('opacity','0.8');
+	
+	//返回顶部功能
+	var $backToTopTxt = "返回顶部";
+	var $backToTopEle = $('<div class="backToTop"></div>')
+	$backToTopEle.appendTo('body');
+	$backToTopEle.text($backToTopTxt).attr("title", $backToTopTxt).click(function() {
+			$("html, body").animate({ scrollTop: 0 }, 120);
+	});
+	$backToTopFun = function() {
+		var st = $(document).scrollTop(), winh = $(window).height();
+		(st > 0)? $backToTopEle.show(): $backToTopEle.hide();    
+		//IE6下的定位
+		if (!window.XMLHttpRequest) {
+			$backToTopEle.css("top", st + winh - 166);    
+		}
+	};
+	$(window).bind("scroll", $backToTopFun);
+	$(function() { $backToTopFun(); });
+	
+	
+	//ie各版本界面兼容
+	if($.browser.msie)
+	{
+		if($.browser.version=="6.0"){
+			$('.teacherimgbox').css({'margin-left':'3px'});
+			$('.teacherbox').css({'height':'140px'});
+		}
+		if($.browser.version=="7.0"||$.browser.version=="6.0")
+		{
+			//老师个人页面
+			$('#parts_nav span.item').css('margin-bottom','-6px');
+			
+			//老师列表页
+		}
+	}
+	
+	
+	//老师个人页面横向标签切换
+	$('#parts_nav').find('span.item').each(function(index, element) {
+		$(this).click(function(e) {
+			$(this).addClass('selected').siblings('span.item').removeClass('selected');
+			$('#teacher_main').find('.teacher_parts').removeClass('selected');
+			$('#teacher_main .teacher_parts:eq('+index+')').addClass('selected');
+		});
+	});
+	
+	// #号链接变js
+	$('a[href="#"]').attr('href','javascript:void(0);');
+	$('a.newsline').attr('target','_blank');
+	$('a.down-item').click(function(e) {
+		$.ajax($(this).attr('url'));
+	});
+	
+	//站点地图开闭
+	$('#sitemap-link').click(function(e) {
+		$('#footer').toggleClass('auto');
+		$('#footer #sitemap').slideToggle(300);
+	});
+	
+	//左导航与主块高度一致
+	/*var $main=$('#content .mainContent');
+	var $left=$main.prev('.left_nav');
+	if($main.height()<$left.height()+130){
+		$main.css('height',$left.height()+130+'px');
+	}*/
+
+	$('#para-Content a').each(function(index, el) {
+		if(!$(this).attr('target')){
+			$(this).attr('target','_blank');
+		}
+	});
+});
+
